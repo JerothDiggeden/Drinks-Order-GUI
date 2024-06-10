@@ -233,10 +233,6 @@ def window_final():
             temp = gat_pop_lst_chck[-6:]
             for i in range(len(gat_pop_lst)):
                 gat_pop_lst[i] = temp[i]
-    # concat()
-    # minimum()
-    # calc()
-    # print(order_result)
     frame1.pack_forget()
     frame2.pack_forget()
     frame3.pack_forget()
@@ -244,6 +240,13 @@ def window_final():
     frame6.pack_forget()
     frame7.pack_forget()
     frame8.pack(fill=ctk.BOTH, expand=True)
+
+
+def place_order():
+    concat()
+    minimum()
+    calc()
+    print(order_result)
 
 
 pepsi_sml_lst = []
@@ -497,17 +500,23 @@ berry_pt_box.pack()
 # BUTTONS
 back_gat = ctk.CTkButton(frame7, text="Back", command=window_tea)
 back_gat.pack(side=ctk.BOTTOM, pady=10)
-gat_button = ctk.CTkButton(frame7, text="Place Order", command=window_final)
+gat_button = ctk.CTkButton(frame7, text="Next", command=window_final)
 gat_button.pack(side=ctk.BOTTOM, pady=10)
 
 # CREATE FRAME 8
 frame8 = ctk.CTkFrame(root)
 frame8.pack(fill=ctk.BOTH, expand=True)
 
+# TITLE
+label_gat = ctk.CTkLabel(frame8, text="Place Order", font=("Helvetica", 20))
+label_gat.pack(side=ctk.TOP, anchor=ctk.CENTER)
+label_gat = ctk.CTkLabel(frame8, text="", font=("Helvetica", 20))
+label_gat.pack(side=ctk.TOP, anchor=ctk.CENTER)
+
 # BUTTONS
 back_gat = ctk.CTkButton(frame8, text="Back", command=window_gat)
 back_gat.pack(side=ctk.BOTTOM, pady=10)
-gat_button = ctk.CTkButton(frame8, text="Place Order", command=window_final)
+gat_button = ctk.CTkButton(frame8, text="Place Order", command=place_order)
 gat_button.pack(side=ctk.BOTTOM, pady=10)
 
 window_start()
