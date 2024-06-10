@@ -13,6 +13,7 @@ water_lst = []
 tea_lst = []
 gat_pop_lst = []
 order_lst = []
+order_dic = {}
 
 # Function to read JSON file and convert it to a dictionary
 def read_json(file_path):
@@ -25,10 +26,12 @@ file_min_path = "data/min.json"
 
 # Read JSON file and store the data in a dictionary
 file_min = read_json(file_min_path)
-print("file_min:", file_min)
+order_dic = file_min
+
 
 # Initialize an empty list to store the order
 min_stock = []
+
 
 # Function to append string values from the dictionary to the list
 def minimum():
@@ -36,27 +39,20 @@ def minimum():
         string = str(v)
         min_stock.append(string)
 
+
 # Call the calc function
-minimum()
-
-# Print the resulting order list
-print("Minimum:", min_stock)
-
 order_result = []
 def calc():
     min_stock_length = len(min_stock)
     order_lst_length = len(order_lst)
-
-    # Check if the lengths of the lists match
-    if min_stock_length != order_lst_length:
-        print("Error: Lengths of min_stock and order_lst do not match.")
-        return
 
     for count in range(min_stock_length):  # Iterate up to the length of min_stock
         x = float(min_stock[count])
         y = float(order_lst[count])
         z = x - y
         order_result.append(z)
+        order_dic[count] = order_dic[count].append(z)
+
 
 
 def append_pepsi_sml():
@@ -65,7 +61,6 @@ def append_pepsi_sml():
     pepsi_sml_lst.append(sunkist_sml_box.get())
     pepsi_sml_lst.append(lemonade_sml_box.get())
     pepsi_sml_lst.append(solo_sml_box.get())
-    print(pepsi_sml_lst)
 
 
 def append_pepsi_lge():
@@ -74,7 +69,6 @@ def append_pepsi_lge():
     pepsi_lge_lst.append(sunkist_lge_box.get())
     pepsi_lge_lst.append(lemonade_lge_box.get())
     pepsi_lge_lst.append(solo_lge_box.get())
-    print(pepsi_lge_lst)
 
 def append_water():
     water_lst.append(water_box.get())
@@ -83,14 +77,12 @@ def append_water():
     water_lst.append(apple_box.get())
     water_lst.append(black_box.get())
     water_lst.append(mango_box.get())
-    print(water_lst)
 
 def append_tea():
     tea_lst.append(lemon_tea_box.get())
     tea_lst.append(peach_tea_box.get())
     tea_lst.append(mango_tea_box.get())
     tea_lst.append(rasp_tea_box.get())
-    print(tea_lst)
 
 def append_gat_pop():
     gat_pop_lst.append(lime_box.get())
@@ -99,7 +91,6 @@ def append_gat_pop():
     gat_pop_lst.append(apple_pt_box.get())
     gat_pop_lst.append(black_pt_box.get())
     gat_pop_lst.append(berry_pt_box.get())
-    print(gat_pop_lst)
 
 def concat():
     order_lst.extend(pepsi_sml_lst)
@@ -107,8 +98,6 @@ def concat():
     order_lst.extend(water_lst)
     order_lst.extend(tea_lst)
     order_lst.extend(gat_pop_lst)
-    print(len(order_lst))
-    print(file_min)
 
 
 def window_start():
@@ -132,7 +121,8 @@ def window_pepsi_sml():
 
 
 def window_pepsi_lge():
-    append_pepsi_sml()
+    if pepsi_sml_lst == "":
+        append_pepsi_sml()
     frame1.pack_forget()
     frame2.pack_forget()
     frame4.pack_forget()
@@ -178,8 +168,9 @@ def window_gat():
 def window_final():
     append_gat_pop()
     concat()
-    print(order_lst)
+    minimum()
     calc()
+    print(order_result)
     frame1.pack_forget()
     frame2.pack_forget()
     frame3.pack_forget()
@@ -212,27 +203,27 @@ blank.pack(side=ctk.TOP, anchor=ctk.CENTER)
 # LABELS & ENTRY
 pepsi_sml = ctk.CTkLabel(master=frame2, text='Pepsi 450ml')
 pepsi_sml.pack()
-pepsi_sml_box = ctk.CTkEntry(master=frame2, width=20, font=("Helvetica", 20))
+pepsi_sml_box = ctk.CTkEntry(master=frame2, width=40, font=("Helvetica", 20))
 pepsi_sml_box.pack()
 
 pepsi_max_sml = ctk.CTkLabel(master=frame2, text='Pepsi Max 450ml')
 pepsi_max_sml.pack()
-pepsi_max_sml_box = ctk.CTkEntry(master=frame2, width=20, font=("Helvetica", 20))
+pepsi_max_sml_box = ctk.CTkEntry(master=frame2, width=40, font=("Helvetica", 20))
 pepsi_max_sml_box.pack()
 
 sunkist_sml = ctk.CTkLabel(master=frame2, text='Sunkist 450ml')
 sunkist_sml.pack()
-sunkist_sml_box = ctk.CTkEntry(master=frame2, width=20, font=("Helvetica", 20))
+sunkist_sml_box = ctk.CTkEntry(master=frame2, width=40, font=("Helvetica", 20))
 sunkist_sml_box.pack()
 
 lemonade_sml = ctk.CTkLabel(master=frame2, text='Lemonade 450ml')
 lemonade_sml.pack()
-lemonade_sml_box = ctk.CTkEntry(master=frame2, width=20, font=("Helvetica", 20))
+lemonade_sml_box = ctk.CTkEntry(master=frame2, width=40, font=("Helvetica", 20))
 lemonade_sml_box.pack()
 
 solo_sml = ctk.CTkLabel(master=frame2, text='Solo 450ml', justify=ctk.LEFT)
 solo_sml.pack()
-solo_sml_box = ctk.CTkEntry(master=frame2, width=20, font=("Helvetica", 20))
+solo_sml_box = ctk.CTkEntry(master=frame2, width=40, font=("Helvetica", 20))
 solo_sml_box.pack()
 # BUTTONS
 back_start_button = ctk.CTkButton(frame2, text="Back", command=window_start)
@@ -246,32 +237,32 @@ frame3.pack(fill=ctk.BOTH, expand=True)
 # TITLE
 label_pepsi_lge = ctk.CTkLabel(frame3, text="Schweppes 600ml", font=("Helvetica", 20))
 label_pepsi_lge.pack(side=ctk.TOP, anchor=ctk.CENTER)
-blank = ctk.CTkLabel(frame3, text="", font=("Helvetica", 20))
+blank = ctk.CTkLabel(frame3, text="", font=("Helvetica", 40))
 blank.pack(side=ctk.TOP, anchor=ctk.CENTER)
 # LABELS & ENTRY
 pepsi_lge = ctk.CTkLabel(master=frame3, text='Pepsi 600ml')
 pepsi_lge.pack()
-pepsi_lge_box = ctk.CTkEntry(master=frame3, width=20, font=("Helvetica", 20))
+pepsi_lge_box = ctk.CTkEntry(master=frame3, width=40, font=("Helvetica", 20))
 pepsi_lge_box.pack()
 
 pepsi_max_lge = ctk.CTkLabel(master=frame3, text='Pepsi Max 600ml')
 pepsi_max_lge.pack()
-pepsi_max_lge_box = ctk.CTkEntry(master=frame3, width=20, font=("Helvetica", 20))
+pepsi_max_lge_box = ctk.CTkEntry(master=frame3, width=40, font=("Helvetica", 20))
 pepsi_max_lge_box.pack()
 
 sunkist_lge = ctk.CTkLabel(master=frame3, text='Sunkist 600ml')
 sunkist_lge.pack()
-sunkist_lge_box = ctk.CTkEntry(master=frame3, width=20, font=("Helvetica", 20))
+sunkist_lge_box = ctk.CTkEntry(master=frame3, width=40, font=("Helvetica", 20))
 sunkist_lge_box.pack()
 
 lemonade_lge = ctk.CTkLabel(master=frame3, text='Lemonade 600ml')
 lemonade_lge.pack()
-lemonade_lge_box = ctk.CTkEntry(master=frame3, width=20, font=("Helvetica", 20))
+lemonade_lge_box = ctk.CTkEntry(master=frame3, width=40, font=("Helvetica", 20))
 lemonade_lge_box.pack()
 
 solo_lge = ctk.CTkLabel(master=frame3, text='Solo 600ml', justify=ctk.LEFT)
 solo_lge.pack()
-solo_lge_box = ctk.CTkEntry(master=frame3, width=20, font=("Helvetica", 20))
+solo_lge_box = ctk.CTkEntry(master=frame3, width=40, font=("Helvetica", 20))
 solo_lge_box.pack()
 # BUTTONS
 back_start_button = ctk.CTkButton(frame3, text="Back", command=window_pepsi_sml)
@@ -290,32 +281,32 @@ label_water.pack(side=ctk.TOP, anchor=ctk.CENTER)
 # LABELS & ENTRY
 label_water = ctk.CTkLabel(frame4, text="Cool Ridge")
 label_water.pack(side=ctk.TOP, anchor=ctk.CENTER)
-water_box = ctk.CTkEntry(master=frame4, width=20, font=("Helvetica", 20))
+water_box = ctk.CTkEntry(master=frame4, width=40, font=("Helvetica", 20))
 water_box.pack()
 
 label_spring = ctk.CTkLabel(frame4, text="Natural Spring Water")
 label_spring.pack(side=ctk.TOP, anchor=ctk.CENTER)
-spring_box = ctk.CTkEntry(master=frame4, width=20, font=("Helvetica", 20))
+spring_box = ctk.CTkEntry(master=frame4, width=40, font=("Helvetica", 20))
 spring_box.pack()
 # LABELS & ENTRY
 label_orange = ctk.CTkLabel(frame4, text="Orange")
 label_orange.pack(side=ctk.TOP, anchor=ctk.CENTER)
-orange_box = ctk.CTkEntry(master=frame4, width=20, font=("Helvetica", 20))
+orange_box = ctk.CTkEntry(master=frame4, width=40, font=("Helvetica", 20))
 orange_box.pack()
 
 label_apple = ctk.CTkLabel(frame4, text="Apple")
 label_apple.pack(side=ctk.TOP, anchor=ctk.CENTER)
-apple_box = ctk.CTkEntry(master=frame4, width=20, font=("Helvetica", 20))
+apple_box = ctk.CTkEntry(master=frame4, width=40, font=("Helvetica", 20))
 apple_box.pack()
 
 label_black = ctk.CTkLabel(frame4, text="Apple & Blackcurrent")
 label_black.pack(side=ctk.TOP, anchor=ctk.CENTER)
-black_box = ctk.CTkEntry(master=frame4, width=20, font=("Helvetica", 20))
+black_box = ctk.CTkEntry(master=frame4, width=40, font=("Helvetica", 20))
 black_box.pack()
 
 label_mango = ctk.CTkLabel(frame4, text="Mango & Orange")
 label_mango.pack(side=ctk.TOP, anchor=ctk.CENTER)
-mango_box = ctk.CTkEntry(master=frame4, width=20, font=("Helvetica", 20))
+mango_box = ctk.CTkEntry(master=frame4, width=40, font=("Helvetica", 20))
 mango_box.pack()
 
 # BUTTONS
@@ -335,22 +326,22 @@ label_tea.pack(side=ctk.TOP, anchor=ctk.CENTER)
 # LABELS & ENTRY
 label_lemon_tea = ctk.CTkLabel(frame6, text="Lemon Tea")
 label_lemon_tea.pack(side=ctk.TOP, anchor=ctk.CENTER)
-lemon_tea_box = ctk.CTkEntry(master=frame6, width=20, font=("Helvetica", 20))
+lemon_tea_box = ctk.CTkEntry(master=frame6, width=40, font=("Helvetica", 20))
 lemon_tea_box.pack()
 
 label_peach_tea = ctk.CTkLabel(frame6, text="Peach")
 label_peach_tea.pack(side=ctk.TOP, anchor=ctk.CENTER)
-peach_tea_box = ctk.CTkEntry(master=frame6, width=20, font=("Helvetica", 20))
+peach_tea_box = ctk.CTkEntry(master=frame6, width=40, font=("Helvetica", 20))
 peach_tea_box.pack()
 
 label_mango_tea = ctk.CTkLabel(frame6, text="Mango")
 label_mango_tea.pack(side=ctk.TOP, anchor=ctk.CENTER)
-mango_tea_box = ctk.CTkEntry(master=frame6, width=20, font=("Helvetica", 20))
+mango_tea_box = ctk.CTkEntry(master=frame6, width=40, font=("Helvetica", 20))
 mango_tea_box.pack()
 
 label_rasp = ctk.CTkLabel(frame6, text="Raspberry")
 label_rasp.pack(side=ctk.TOP, anchor=ctk.CENTER)
-rasp_tea_box = ctk.CTkEntry(master=frame6, width=20, font=("Helvetica", 20))
+rasp_tea_box = ctk.CTkEntry(master=frame6, width=40, font=("Helvetica", 20))
 rasp_tea_box.pack()
 
 # BUTTONS
@@ -370,12 +361,12 @@ label_gat.pack(side=ctk.TOP, anchor=ctk.CENTER)
 # LABELS & ENTRY
 label_lime = ctk.CTkLabel(frame7, text="Lemon Limey")
 label_lime.pack(side=ctk.TOP, anchor=ctk.CENTER)
-lime_box = ctk.CTkEntry(master=frame7, width=20, font=("Helvetica", 20))
+lime_box = ctk.CTkEntry(master=frame7, width=40, font=("Helvetica", 20))
 lime_box.pack()
 
 label_grape = ctk.CTkLabel(frame7, text="Grape")
 label_grape.pack(side=ctk.TOP, anchor=ctk.CENTER)
-grape_box = ctk.CTkEntry(master=frame7, width=20, font=("Helvetica", 20))
+grape_box = ctk.CTkEntry(master=frame7, width=40, font=("Helvetica", 20))
 grape_box.pack()
 # TITLE
 label_gat = ctk.CTkLabel(frame7, text="", font=("Helvetica", 20))
@@ -387,22 +378,22 @@ label_gat.pack(side=ctk.TOP, anchor=ctk.CENTER)
 # LABELS & ENTRY
 label_orange_pt = ctk.CTkLabel(frame7, text="Orange")
 label_orange_pt.pack(side=ctk.TOP, anchor=ctk.CENTER)
-orange_pt_box = ctk.CTkEntry(master=frame7, width=20, font=("Helvetica", 20))
+orange_pt_box = ctk.CTkEntry(master=frame7, width=40, font=("Helvetica", 20))
 orange_pt_box.pack()
 
 label_apple_pt = ctk.CTkLabel(frame7, text="Apple")
 label_apple_pt.pack(side=ctk.TOP, anchor=ctk.CENTER)
-apple_pt_box = ctk.CTkEntry(master=frame7, width=20, font=("Helvetica", 20))
+apple_pt_box = ctk.CTkEntry(master=frame7, width=40, font=("Helvetica", 20))
 apple_pt_box.pack()
 
 label_black_pt = ctk.CTkLabel(frame7, text="Black")
 label_black_pt.pack(side=ctk.TOP, anchor=ctk.CENTER)
-black_pt_box = ctk.CTkEntry(master=frame7, width=20, font=("Helvetica", 20))
+black_pt_box = ctk.CTkEntry(master=frame7, width=40, font=("Helvetica", 20))
 black_pt_box.pack()
 
 label_berry_pt = ctk.CTkLabel(frame7, text="Wild Berry")
 label_berry_pt.pack(side=ctk.TOP, anchor=ctk.CENTER)
-berry_pt_box = ctk.CTkEntry(master=frame7, width=20, font=("Helvetica", 20))
+berry_pt_box = ctk.CTkEntry(master=frame7, width=40, font=("Helvetica", 20))
 berry_pt_box.pack()
 
 # BUTTONS
