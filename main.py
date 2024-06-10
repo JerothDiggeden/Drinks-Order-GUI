@@ -48,12 +48,19 @@ def append_pepsi_sml_chck():
 
 
 def append_pepsi_lge():
-    pepsi_lge_lst.append(pepsi_lge_box.get())
-    pepsi_lge_lst.append(pepsi_max_lge_box.get())
-    pepsi_lge_lst.append(sunkist_lge_box.get())
-    pepsi_lge_lst.append(lemonade_lge_box.get())
-    pepsi_lge_lst.append(solo_lge_box.get())
+    pepsi_lge_lst.append(int(pepsi_lge_box.get()))
+    pepsi_lge_lst.append(int(pepsi_max_lge_box.get()))
+    pepsi_lge_lst.append(int(sunkist_lge_box.get()))
+    pepsi_lge_lst.append(int(lemonade_lge_box.get()))
+    pepsi_lge_lst.append(int(solo_lge_box.get()))
 
+
+def append_pepsi_lge_chck():
+    pepsi_lge_lst_chck.append(int(pepsi_lge_box.get()))
+    pepsi_lge_lst_chck.append(int(pepsi_max_lge_box.get()))
+    pepsi_lge_lst_chck.append(int(sunkist_lge_box.get()))
+    pepsi_lge_lst_chck.append(int(lemonade_lge_box.get()))
+    pepsi_lge_lst_chck.append(int(solo_lge_box.get()))
 
 def append_water():
     water_lst.append(water_box.get())
@@ -99,9 +106,8 @@ def window_start():
 
 
 def window_pepsi_sml():
-    global counter
-    counter += 1
-    print(counter)
+    global counter1
+    counter1 += 1
     frame1.pack_forget()
     frame3.pack_forget()
     frame4.pack_forget()
@@ -116,7 +122,7 @@ def window_pepsi_lge():
     counter1 += 1
     if counter1 == 2:
         append_pepsi_sml()
-    elif counter > 2:
+    elif counter1 > 2:
         if len(pepsi_sml_lst) == 5:
             pepsi_sml_lst_chck.clear()
             append_pepsi_sml_chck()
@@ -132,11 +138,26 @@ def window_pepsi_lge():
     frame7.pack_forget()
     frame8.pack_forget()
     frame3.pack(fill=ctk.BOTH, expand=True)
-    print(pepsi_sml_lst)
+    print("pepsi sml", pepsi_sml_lst)
 
 
 def window_water():
-    append_pepsi_lge()
+    global counter2
+    counter2 += 1
+    if counter2 <= 1:
+        append_pepsi_lge()
+    elif counter2 > 1:
+        if len(pepsi_lge_lst) == 5:
+            print("len")
+            append_pepsi_lge_chck()
+            print(pepsi_lge_lst)
+            print(pepsi_lge_lst_chck)
+            temp = pepsi_lge_lst_chck[-5:]
+            for i in range(len(pepsi_lge_lst)):
+                pepsi_lge_lst[i] = temp[i]
+        else:
+            print("else")
+            del pepsi_lge_lst[:4]
     frame1.pack_forget()
     frame2.pack_forget()
     frame3.pack_forget()
@@ -144,6 +165,8 @@ def window_water():
     frame7.pack_forget()
     frame8.pack_forget()
     frame4.pack(fill=ctk.BOTH, expand=True)
+
+    print("pepsi_lge", pepsi_lge_lst)
 
 
 def window_tea():
