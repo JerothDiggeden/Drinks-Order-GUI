@@ -1,23 +1,62 @@
 import pandas as pd
-import numpy as np
 import customtkinter as ctk
+import json
 
 
 # VARIABLES
-with open("data/min.txt", "r") as file_min_obj:
-    file_min = file_min_obj.read()
-
 with open("data/now_count.txt", "r") as file_now_obj:
     file_now = file_now_obj.read()
 
-print(file_min)
-print(file_now)
 pepsi_sml_lst = []
 pepsi_lge_lst = []
 water_lst = []
 tea_lst = []
 gat_pop_lst = []
 order_lst = []
+
+# Function to read JSON file and convert it to a dictionary
+def read_json(file_path):
+    with open(file_path, "r") as file_min_obj:
+        file_min = json.load(file_min_obj)
+    return file_min
+
+# File path to the JSON file
+file_min_path = "data/min.json"
+
+# Read JSON file and store the data in a dictionary
+file_min = read_json(file_min_path)
+print("file_min:", file_min)
+
+# Initialize an empty list to store the order
+min_stock = []
+
+# Function to append string values from the dictionary to the list
+def minimum():
+    for k, v in file_min.items():
+        string = str(v)
+        min_stock.append(string)
+
+# Call the calc function
+minimum()
+
+# Print the resulting order list
+print("Minimum:", min_stock)
+
+order_result = []
+def calc():
+    min_stock_length = len(min_stock)
+    order_lst_length = len(order_lst)
+
+    # Check if the lengths of the lists match
+    if min_stock_length != order_lst_length:
+        print("Error: Lengths of min_stock and order_lst do not match.")
+        return
+
+    for count in range(min_stock_length):  # Iterate up to the length of min_stock
+        x = float(min_stock[count])
+        y = float(order_lst[count])
+        z = x - y
+        order_result.append(z)
 
 
 def append_pepsi_sml():
@@ -70,10 +109,6 @@ def concat():
     order_lst.extend(gat_pop_lst)
     print(len(order_lst))
     print(file_min)
-
-def calc():
-    print()
-
 
 
 def window_start():
@@ -143,6 +178,8 @@ def window_gat():
 def window_final():
     append_gat_pop()
     concat()
+    print(order_lst)
+    calc()
     frame1.pack_forget()
     frame2.pack_forget()
     frame3.pack_forget()
