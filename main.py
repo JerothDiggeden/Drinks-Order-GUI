@@ -63,28 +63,52 @@ def append_pepsi_lge_chck():
     pepsi_lge_lst_chck.append(int(solo_lge_box.get()))
 
 def append_water():
-    water_lst.append(water_box.get())
-    water_lst.append(spring_box.get())
-    water_lst.append(orange_box.get())
-    water_lst.append(apple_box.get())
-    water_lst.append(black_box.get())
-    water_lst.append(mango_box.get())
+    water_lst.append(int(water_box.get()))
+    water_lst.append(int(spring_box.get()))
+    water_lst.append(int(orange_box.get()))
+    water_lst.append(int(apple_box.get()))
+    water_lst.append(int(black_box.get()))
+    water_lst.append(int(mango_box.get()))
+
+def append_water_chck():
+    water_lst_chck.append(int(water_box.get()))
+    water_lst_chck.append(int(spring_box.get()))
+    water_lst_chck.append(int(orange_box.get()))
+    water_lst_chck.append(int(apple_box.get()))
+    water_lst_chck.append(int(black_box.get()))
+    water_lst_chck.append(int(mango_box.get()))
 
 
 def append_tea():
-    tea_lst.append(lemon_tea_box.get())
-    tea_lst.append(peach_tea_box.get())
-    tea_lst.append(mango_tea_box.get())
-    tea_lst.append(rasp_tea_box.get())
+    tea_lst.append(int(lemon_tea_box.get()))
+    tea_lst.append(int(peach_tea_box.get()))
+    tea_lst.append(int(mango_tea_box.get()))
+    tea_lst.append(int(rasp_tea_box.get()))
+
+
+def append_tea_chck():
+    tea_lst_chck.append(int(lemon_tea_box.get()))
+    tea_lst_chck.append(int(peach_tea_box.get()))
+    tea_lst_chck.append(int(mango_tea_box.get()))
+    tea_lst_chck.append(int(rasp_tea_box.get()))
 
 
 def append_gat_pop():
-    gat_pop_lst.append(lime_box.get())
-    gat_pop_lst.append(grape_box.get())
-    gat_pop_lst.append(orange_pt_box.get())
-    gat_pop_lst.append(apple_pt_box.get())
-    gat_pop_lst.append(black_pt_box.get())
-    gat_pop_lst.append(berry_pt_box.get())
+    gat_pop_lst.append(int(lime_box.get()))
+    gat_pop_lst.append(int(grape_box.get()))
+    gat_pop_lst.append(int(orange_pt_box.get()))
+    gat_pop_lst.append(int(apple_pt_box.get()))
+    gat_pop_lst.append(int(black_pt_box.get()))
+    gat_pop_lst.append(int(berry_pt_box.get()))
+
+
+def append_gat_pop_chck():
+    gat_pop_lst_chck.append(int(lime_box.get()))
+    gat_pop_lst_chck.append(int(grape_box.get()))
+    gat_pop_lst_chck.append(int(orange_pt_box.get()))
+    gat_pop_lst_chck.append(int(apple_pt_box.get()))
+    gat_pop_lst_chck.append(int(black_pt_box.get()))
+    gat_pop_lst_chck.append(int(berry_pt_box.get()))
 
 
 def concat():
@@ -129,8 +153,6 @@ def window_pepsi_lge():
             del pepsi_sml_lst_chck[5:]
             for i in range(len(pepsi_sml_lst)):
                 pepsi_sml_lst[i] = pepsi_sml_lst_chck[i]
-        else:
-            del pepsi_sml_lst[5:]
     frame1.pack_forget()
     frame2.pack_forget()
     frame4.pack_forget()
@@ -138,7 +160,6 @@ def window_pepsi_lge():
     frame7.pack_forget()
     frame8.pack_forget()
     frame3.pack(fill=ctk.BOTH, expand=True)
-    print("pepsi sml", pepsi_sml_lst)
 
 
 def window_water():
@@ -148,16 +169,10 @@ def window_water():
         append_pepsi_lge()
     elif counter2 > 1:
         if len(pepsi_lge_lst) == 5:
-            print("len")
             append_pepsi_lge_chck()
-            print(pepsi_lge_lst)
-            print(pepsi_lge_lst_chck)
             temp = pepsi_lge_lst_chck[-5:]
             for i in range(len(pepsi_lge_lst)):
                 pepsi_lge_lst[i] = temp[i]
-        else:
-            print("else")
-            del pepsi_lge_lst[:4]
     frame1.pack_forget()
     frame2.pack_forget()
     frame3.pack_forget()
@@ -166,11 +181,18 @@ def window_water():
     frame8.pack_forget()
     frame4.pack(fill=ctk.BOTH, expand=True)
 
-    print("pepsi_lge", pepsi_lge_lst)
-
 
 def window_tea():
-    append_water()
+    global counter3
+    counter3 += 1
+    if counter3 <= 1:
+        append_water()
+    elif counter3 > 1:
+        if len(water_lst) == 6:
+            append_water_chck()
+            temp = water_lst_chck[-6:]
+            for i in range(len(water_lst)):
+                water_lst[i] = temp[i]
     frame1.pack_forget()
     frame2.pack_forget()
     frame3.pack_forget()
@@ -181,7 +203,16 @@ def window_tea():
 
 
 def window_gat():
-    append_tea()
+    global counter4
+    counter4 += 1
+    if counter4 <= 1:
+        append_tea()
+    elif counter4 > 1:
+        if len(tea_lst) == 4:
+            append_tea_chck()
+            temp = tea_lst_chck[-4:]
+            for i in range(len(tea_lst)):
+                tea_lst[i] = temp[i]
     frame1.pack_forget()
     frame2.pack_forget()
     frame3.pack_forget()
@@ -192,11 +223,20 @@ def window_gat():
 
 
 def window_final():
-    append_gat_pop()
-    concat()
-    minimum()
-    calc()
-    print(order_result)
+    global counter5
+    counter5 += 1
+    if counter5 <= 1:
+        append_gat_pop()
+    elif counter5 > 1:
+        if len(gat_pop_lst) == 6:
+            append_gat_pop_chck()
+            temp = gat_pop_lst_chck[-6:]
+            for i in range(len(gat_pop_lst)):
+                gat_pop_lst[i] = temp[i]
+    # concat()
+    # minimum()
+    # calc()
+    # print(order_result)
     frame1.pack_forget()
     frame2.pack_forget()
     frame3.pack_forget()
@@ -217,6 +257,7 @@ water_lst_chck = []
 tea_lst_chck = []
 gat_pop_lst_chck = []
 order_lst = []
+temp = []
 order_dic = {}
 
 with open("data/now_count.txt", "r") as file_now_obj:
