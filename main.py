@@ -3,46 +3,193 @@ import numpy as np
 import customtkinter as ctk
 
 
+root = ctk.CTk()
+root.geometry("600x600")
+frame = ctk.CTkFrame(root)
+
+
+
 def window_start():
     frame2.pack_forget()
-    frame1.pack()
+    frame3.pack_forget()
+    frame4.pack_forget()
+    frame5.pack_forget()
+    frame6.pack_forget()
+    frame7.pack_forget()
+    frame8.pack_forget()
+    frame1.pack(fill=ctk.BOTH, expand=True)
+    adjust_geometry()
 
 
 def window_pepsi_sml():
     frame1.pack_forget()
-    frame2.pack()
+    frame3.pack_forget()
+    frame4.pack_forget()
+    frame5.pack_forget()
+    frame6.pack_forget()
+    frame7.pack_forget()
+    frame8.pack_forget()
+    frame2.pack(fill=ctk.BOTH, expand=True)
+    adjust_geometry()
 
 
 def window_pepsi_lge():
+    frame1.pack_forget()
     frame2.pack_forget()
-    frame3.pack()
+    frame4.pack_forget()
+    frame5.pack_forget()
+    frame6.pack_forget()
+    frame7.pack_forget()
+    frame8.pack_forget()
+    frame3.pack(fill=ctk.BOTH, expand=True)
+    adjust_geometry()
+
+
+def window_water():
+    frame1.pack_forget()
+    frame2.pack_forget()
+    frame3.pack_forget()
+    frame5.pack_forget()
+    frame6.pack_forget()
+    frame7.pack_forget()
+    frame8.pack_forget()
+    frame4.pack(fill=ctk.BOTH, expand=True)
+    adjust_geometry()
+
+
+def window_juices():
+    frame1.pack_forget()
+    frame2.pack_forget()
+    frame3.pack_forget()
+    frame4.pack_forget()
+    frame6.pack_forget()
+    frame7.pack_forget()
+    frame8.pack_forget()
+    frame5.pack(fill=ctk.BOTH, expand=True)
+    adjust_geometry()
+
+
+def window_tea():
+    frame1.pack_forget()
+    frame2.pack_forget()
+    frame3.pack_forget()
+    frame4.pack_forget()
+    frame5.pack_forget()
+    frame7.pack_forget()
+    frame8.pack_forget()
+    frame6.pack(fill=ctk.BOTH, expand=True)
+    adjust_geometry()
+
+
+def window_gat():
+    frame1.pack_forget()
+    frame2.pack_forget()
+    frame3.pack_forget()
+    frame4.pack_forget()
+    frame5.pack_forget()
+    frame6.pack_forget()
+    frame8.pack_forget()
+    frame7.pack(fill=ctk.BOTH, expand=True)
+    adjust_geometry()
+
+
+def window_pop():
+    frame1.pack_forget()
+    frame2.pack_forget()
+    frame3.pack_forget()
+    frame4.pack_forget()
+    frame6.pack_forget()
+    frame7.pack_forget()
+    frame8.pack(fill=ctk.BOTH, expand=True)
+    adjust_geometry()
+
+
+def adjust_geometry():
+    # Update the geometry based on the requested width and height of the frame
+    root.geometry(f"{frame.winfo_reqwidth()}x{frame.winfo_reqheight()}")
 
 
 root = ctk.CTk()
-root.geometry("300x300")
+root.geometry("600x300")
 root.title("Bucking Bull Ordering")
 
 # CREATE FRAME 1
 frame1 = ctk.CTkFrame(root)
+frame1.pack(fill=ctk.BOTH, expand=True)
 label_start = ctk.CTkLabel(frame1, text="Start Order", font=("Helvetica", 20))
+label_start.pack(fill=ctk.BOTH, anchor=ctk.CENTER)
 start_button = ctk.CTkButton(frame1, text="Start Order", command=window_pepsi_sml)
-start_button.pack(pady=10)
+start_button.pack(side=ctk.TOP, pady=10, anchor=ctk.CENTER)
 
 # CREATE FRAME 2
 frame2 = ctk.CTkFrame(root)
+frame2.pack(fill=ctk.BOTH, expand=True)
 label_pepsi_sml = ctk.CTkLabel(frame2, text="Pepsi 450ml", font=("Helvetica", 20))
+label_pepsi_sml.pack(side=ctk.TOP, anchor=ctk.CENTER)
 back_start_button = ctk.CTkButton(frame2, text="Back", command=window_start)
-back_start_button.pack(pady=10)
-pepsi_lge_button = ctk.CTkButton(frame2, text="Next", command=window_pepsi_lge())
-pepsi_lge_button.pack(pady=10)
+back_start_button.pack(side=ctk.BOTTOM, pady=10)
+pepsi_sml_button = ctk.CTkButton(frame2, text="Next", command=window_pepsi_lge)
+pepsi_sml_button.pack(side=ctk.BOTTOM, pady=10)
 
 # CREATE FRAME 3
 frame3 = ctk.CTkFrame(root)
+frame3.pack(fill=ctk.BOTH, expand=True)
 label_pepsi_lge = ctk.CTkLabel(frame3, text="Pepsi 600ml", font=("Helvetica", 20))
-back_pepsi_sml = ctk.CTkButton(frame3, text="Back", command=window_start)
-back_pepsi_sml.pack(pady=10)
-water_button = ctk.CTkButton(frame3, text="Next", command=window_pepsi_lge())
-water_button.pack(pady=10)
+label_pepsi_lge.pack(side=ctk.TOP, anchor=ctk.CENTER)
+back_start_button = ctk.CTkButton(frame3, text="Back", command=window_pepsi_sml)
+back_start_button.pack(side=ctk.BOTTOM, pady=10)
+pepsi_lge_button = ctk.CTkButton(frame3, text="Next", command=window_water)
+pepsi_lge_button.pack(side=ctk.BOTTOM, pady=10)
+
+# CREATE FRAME 4
+frame4 = ctk.CTkFrame(root)
+frame4.pack(fill=ctk.BOTH, expand=True)
+label_water = ctk.CTkLabel(frame4, text="Water", font=("Helvetica", 20))
+label_water.pack(side=ctk.TOP, anchor=ctk.CENTER)
+back_water = ctk.CTkButton(frame4, text="Back", command=window_pepsi_lge)
+back_water.pack(side=ctk.BOTTOM, pady=10)
+water_button = ctk.CTkButton(frame4, text="Next", command=window_juices)
+water_button.pack(side=ctk.BOTTOM, pady=10)
+
+# CREATE FRAME 5
+frame5 = ctk.CTkFrame(root)
+frame5.pack(fill=ctk.BOTH, expand=True)
+label_juice = ctk.CTkLabel(frame5, text="Juice", font=("Helvetica", 20))
+label_juice.pack(side=ctk.TOP, anchor=ctk.CENTER)
+back_juice = ctk.CTkButton(frame5, text="Back", command=window_juices)
+back_juice.pack(side=ctk.BOTTOM, pady=10)
+juice_button = ctk.CTkButton(frame5, text="Next", command=window_tea)
+juice_button.pack(side=ctk.BOTTOM, pady=10)
+
+# CREATE FRAME 6
+frame6 = ctk.CTkFrame(root)
+frame6.pack(fill=ctk.BOTH, expand=True)
+label_tea = ctk.CTkLabel(frame6, text="Iced Tea", font=("Helvetica", 20))
+label_tea.pack(side=ctk.TOP, anchor=ctk.CENTER)
+back_tea = ctk.CTkButton(frame6, text="Back", command=window_juices)
+back_tea.pack(side=ctk.BOTTOM, pady=10)
+tea_button = ctk.CTkButton(frame6, text="Next", command=window_gat)
+tea_button.pack(side=ctk.BOTTOM, pady=10)
+
+# CREATE FRAME 7
+frame7 = ctk.CTkFrame(root)
+frame7.pack(fill=ctk.BOTH, expand=True)
+label_gat = ctk.CTkLabel(frame7, text="Gatorade", font=("Helvetica", 20))
+label_gat.pack(side=ctk.TOP, anchor=ctk.CENTER)
+back_gat = ctk.CTkButton(frame7, text="Back", command=window_gat)
+back_gat.pack(side=ctk.BOTTOM, pady=10)
+gat_button = ctk.CTkButton(frame7, text="Next", command=window_pop)
+gat_button.pack(side=ctk.BOTTOM, pady=10)
+
+# CREATE FRAME 8
+frame8 = ctk.CTkFrame(root)
+frame8.pack(fill=ctk.BOTH, expand=True)
+label_pop = ctk.CTkLabel(frame8, text="Pop Top", font=("Helvetica", 20))
+label_pop.pack(side=ctk.TOP, anchor=ctk.CENTER)
+back_pop = ctk.CTkButton(frame8, text="Back", command=window_pop)
+back_pop.pack(side=ctk.BOTTOM, pady=10)
+pop_button = ctk.CTkButton(frame8, text="Create Order")
+pop_button.pack(side=ctk.BOTTOM, pady=10)
 
 window_start()
 
