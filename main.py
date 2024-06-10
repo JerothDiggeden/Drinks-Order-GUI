@@ -4,15 +4,20 @@ import customtkinter as ctk
 
 
 # VARIABLES
-with open("data/min.txt", "r") as file_min:
-    file_min = file_min.read()
+with open("data/min.txt", "r") as file_min_obj:
+    file_min = file_min_obj.read()
 
-with open("data/now_count.txt", "r") as file_now:
-    file_now = file_now.read()
+with open("data/now_count.txt", "r") as file_now_obj:
+    file_now = file_now_obj.read()
 
 print(file_min)
 print(file_now)
 pepsi_sml_lst = []
+pepsi_lge_lst = []
+water_lst = []
+tea_lst = []
+gat_pop_lst = []
+order_lst = []
 
 
 def append_pepsi_sml():
@@ -23,12 +28,56 @@ def append_pepsi_sml():
     pepsi_sml_lst.append(solo_sml_box.get())
     print(pepsi_sml_lst)
 
+
+def append_pepsi_lge():
+    pepsi_lge_lst.append(pepsi_lge_box.get())
+    pepsi_lge_lst.append(pepsi_max_lge_box.get())
+    pepsi_lge_lst.append(sunkist_lge_box.get())
+    pepsi_lge_lst.append(lemonade_lge_box.get())
+    pepsi_lge_lst.append(solo_lge_box.get())
+    print(pepsi_lge_lst)
+
+def append_water():
+    water_lst.append(water_box.get())
+    water_lst.append(spring_box.get())
+    water_lst.append(orange_box.get())
+    water_lst.append(apple_box.get())
+    water_lst.append(black_box.get())
+    water_lst.append(mango_box.get())
+    print(water_lst)
+
+def append_tea():
+    tea_lst.append(lemon_tea_box.get())
+    tea_lst.append(peach_tea_box.get())
+    tea_lst.append(mango_tea_box.get())
+    tea_lst.append(rasp_tea_box.get())
+    print(tea_lst)
+
+def append_gat_pop():
+    gat_pop_lst.append(lime_box.get())
+    gat_pop_lst.append(grape_box.get())
+    gat_pop_lst.append(orange_pt_box.get())
+    gat_pop_lst.append(apple_pt_box.get())
+    gat_pop_lst.append(black_pt_box.get())
+    gat_pop_lst.append(berry_pt_box.get())
+    print(gat_pop_lst)
+
+def concat():
+    order_lst.extend(pepsi_sml_lst)
+    order_lst.extend(pepsi_lge_lst)
+    order_lst.extend(water_lst)
+    order_lst.extend(tea_lst)
+    order_lst.extend(gat_pop_lst)
+    print(order_lst)
+
+
 def window_start():
     frame2.pack_forget()
     frame3.pack_forget()
     frame4.pack_forget()
     frame6.pack_forget()
     frame7.pack_forget()
+    frame8.pack_forget()
     frame1.pack(fill=ctk.BOTH, expand=True)
 
 
@@ -38,6 +87,7 @@ def window_pepsi_sml():
     frame4.pack_forget()
     frame6.pack_forget()
     frame7.pack_forget()
+    frame8.pack_forget()
     frame2.pack(fill=ctk.BOTH, expand=True)
 
 
@@ -48,39 +98,52 @@ def window_pepsi_lge():
     frame4.pack_forget()
     frame6.pack_forget()
     frame7.pack_forget()
+    frame8.pack_forget()
     frame3.pack(fill=ctk.BOTH, expand=True)
 
 
 def window_water():
+    append_pepsi_lge()
     frame1.pack_forget()
     frame2.pack_forget()
     frame3.pack_forget()
     frame6.pack_forget()
     frame7.pack_forget()
+    frame8.pack_forget()
     frame4.pack(fill=ctk.BOTH, expand=True)
 
 
 def window_tea():
+    append_water()
     frame1.pack_forget()
     frame2.pack_forget()
     frame3.pack_forget()
     frame4.pack_forget()
     frame7.pack_forget()
+    frame8.pack_forget()
     frame6.pack(fill=ctk.BOTH, expand=True)
 
 
 def window_gat():
+    append_tea()
     frame1.pack_forget()
     frame2.pack_forget()
     frame3.pack_forget()
     frame4.pack_forget()
     frame6.pack_forget()
+    frame8.pack_forget()
     frame7.pack(fill=ctk.BOTH, expand=True)
 
 
-def adjust_geometry():
-    # Update the geometry based on the requested width and height of the frame
-    root.geometry(f"{frame.winfo_reqwidth()}x{frame.winfo_reqheight()}")
+def window_final():
+    concat()
+    frame1.pack_forget()
+    frame2.pack_forget()
+    frame3.pack_forget()
+    frame4.pack_forget()
+    frame6.pack_forget()
+    frame7.pack_forget()
+    frame8.pack(fill=ctk.BOTH, expand=True)
 
 
 root = ctk.CTk()
@@ -199,8 +262,8 @@ orange_box.pack()
 
 label_apple = ctk.CTkLabel(frame4, text="Apple")
 label_apple.pack(side=ctk.TOP, anchor=ctk.CENTER)
-spring_apple = ctk.CTkEntry(master=frame4, width=20, font=("Helvetica", 20))
-spring_apple.pack()
+apple_box = ctk.CTkEntry(master=frame4, width=20, font=("Helvetica", 20))
+apple_box.pack()
 
 label_black = ctk.CTkLabel(frame4, text="Apple & Blackcurrent")
 label_black.pack(side=ctk.TOP, anchor=ctk.CENTER)
@@ -244,8 +307,8 @@ mango_tea_box.pack()
 
 label_rasp = ctk.CTkLabel(frame6, text="Raspberry")
 label_rasp.pack(side=ctk.TOP, anchor=ctk.CENTER)
-rasp_box = ctk.CTkEntry(master=frame6, width=20, font=("Helvetica", 20))
-rasp_box.pack()
+rasp_tea_box = ctk.CTkEntry(master=frame6, width=20, font=("Helvetica", 20))
+rasp_tea_box.pack()
 
 # BUTTONS
 back_tea = ctk.CTkButton(frame6, text="Back", command=window_water)
@@ -302,9 +365,18 @@ berry_pt_box.pack()
 # BUTTONS
 back_gat = ctk.CTkButton(frame7, text="Back", command=window_tea)
 back_gat.pack(side=ctk.BOTTOM, pady=10)
-gat_button = ctk.CTkButton(frame7, text="Place Order")
+gat_button = ctk.CTkButton(frame7, text="Place Order", command=window_final)
+gat_button.pack(side=ctk.BOTTOM, pady=10)
+
+# CREATE FRAME 8
+frame8 = ctk.CTkFrame(root)
+frame8.pack(fill=ctk.BOTH, expand=True)
+
+# BUTTONS
+back_gat = ctk.CTkButton(frame8, text="Back", command=window_gat())
+back_gat.pack(side=ctk.BOTTOM, pady=10)
+gat_button = ctk.CTkButton(frame8, text="Place Order", command=window_final)
 gat_button.pack(side=ctk.BOTTOM, pady=10)
 
 window_start()
-
 root.mainloop()
