@@ -12,7 +12,16 @@ with open("data/now_count.txt", "r") as file_now:
 
 print(file_min)
 print(file_now)
+pepsi_sml_lst = []
 
+
+def append_pepsi_sml():
+    pepsi_sml_lst.append(pepsi_sml_box.get())
+    pepsi_sml_lst.append(pepsi_max_sml_box.get())
+    pepsi_sml_lst.append(sunkist_sml_box.get())
+    pepsi_sml_lst.append(lemonade_sml_box.get())
+    pepsi_sml_lst.append(solo_sml_box.get())
+    print(pepsi_sml_lst)
 
 def window_start():
     frame2.pack_forget()
@@ -33,6 +42,7 @@ def window_pepsi_sml():
 
 
 def window_pepsi_lge():
+    append_pepsi_sml()
     frame1.pack_forget()
     frame2.pack_forget()
     frame4.pack_forget()
