@@ -3,36 +3,6 @@ import customtkinter as ctk
 import json
 
 
-# VARIABLES
-with open("data/now_count.txt", "r") as file_now_obj:
-    file_now = file_now_obj.read()
-
-pepsi_sml_lst = []
-pepsi_lge_lst = []
-water_lst = []
-tea_lst = []
-gat_pop_lst = []
-order_lst = []
-order_dic = {}
-
-# Function to read JSON file and convert it to a dictionary
-def read_json(file_path):
-    with open(file_path, "r") as file_min_obj:
-        file_min = json.load(file_min_obj)
-    return file_min
-
-# File path to the JSON file
-file_min_path = "data/min.json"
-
-# Read JSON file and store the data in a dictionary
-file_min = read_json(file_min_path)
-order_dic = file_min
-
-
-# Initialize an empty list to store the order
-min_stock = []
-
-
 # Function to append string values from the dictionary to the list
 def minimum():
     for k, v in file_min.items():
@@ -42,6 +12,13 @@ def minimum():
 
 # Call the calc function
 order_result = []
+counter1 = 0
+counter2 = 0
+counter3 = 0
+counter4 = 0
+counter5 = 0
+
+
 def calc():
     min_stock_length = len(min_stock)
     order_lst_length = len(order_lst)
@@ -54,13 +31,20 @@ def calc():
         order_dic[count] = order_dic[count].append(z)
 
 
-
 def append_pepsi_sml():
-    pepsi_sml_lst.append(pepsi_sml_box.get())
-    pepsi_sml_lst.append(pepsi_max_sml_box.get())
-    pepsi_sml_lst.append(sunkist_sml_box.get())
-    pepsi_sml_lst.append(lemonade_sml_box.get())
-    pepsi_sml_lst.append(solo_sml_box.get())
+    pepsi_sml_lst.append(int(pepsi_sml_box.get()))
+    pepsi_sml_lst.append(int(pepsi_max_sml_box.get()))
+    pepsi_sml_lst.append(int(sunkist_sml_box.get()))
+    pepsi_sml_lst.append(int(lemonade_sml_box.get()))
+    pepsi_sml_lst.append(int(solo_sml_box.get()))
+
+
+def append_pepsi_sml_chck():
+    pepsi_sml_lst_chck.append(int(pepsi_sml_box.get()))
+    pepsi_sml_lst_chck.append(int(pepsi_max_sml_box.get()))
+    pepsi_sml_lst_chck.append(int(sunkist_sml_box.get()))
+    pepsi_sml_lst_chck.append(int(lemonade_sml_box.get()))
+    pepsi_sml_lst_chck.append(int(solo_sml_box.get()))
 
 
 def append_pepsi_lge():
@@ -70,6 +54,7 @@ def append_pepsi_lge():
     pepsi_lge_lst.append(lemonade_lge_box.get())
     pepsi_lge_lst.append(solo_lge_box.get())
 
+
 def append_water():
     water_lst.append(water_box.get())
     water_lst.append(spring_box.get())
@@ -78,11 +63,13 @@ def append_water():
     water_lst.append(black_box.get())
     water_lst.append(mango_box.get())
 
+
 def append_tea():
     tea_lst.append(lemon_tea_box.get())
     tea_lst.append(peach_tea_box.get())
     tea_lst.append(mango_tea_box.get())
     tea_lst.append(rasp_tea_box.get())
+
 
 def append_gat_pop():
     gat_pop_lst.append(lime_box.get())
@@ -91,6 +78,7 @@ def append_gat_pop():
     gat_pop_lst.append(apple_pt_box.get())
     gat_pop_lst.append(black_pt_box.get())
     gat_pop_lst.append(berry_pt_box.get())
+
 
 def concat():
     order_lst.extend(pepsi_sml_lst)
@@ -111,6 +99,9 @@ def window_start():
 
 
 def window_pepsi_sml():
+    global counter
+    counter += 1
+    print(counter)
     frame1.pack_forget()
     frame3.pack_forget()
     frame4.pack_forget()
@@ -121,8 +112,19 @@ def window_pepsi_sml():
 
 
 def window_pepsi_lge():
-    if pepsi_sml_lst == "":
+    global counter1
+    counter1 += 1
+    if counter1 == 2:
         append_pepsi_sml()
+    elif counter > 2:
+        if len(pepsi_sml_lst) == 5:
+            pepsi_sml_lst_chck.clear()
+            append_pepsi_sml_chck()
+            del pepsi_sml_lst_chck[5:]
+            for i in range(len(pepsi_sml_lst)):
+                pepsi_sml_lst[i] = pepsi_sml_lst_chck[i]
+        else:
+            del pepsi_sml_lst[5:]
     frame1.pack_forget()
     frame2.pack_forget()
     frame4.pack_forget()
@@ -130,6 +132,7 @@ def window_pepsi_lge():
     frame7.pack_forget()
     frame8.pack_forget()
     frame3.pack(fill=ctk.BOTH, expand=True)
+    print(pepsi_sml_lst)
 
 
 def window_water():
@@ -178,6 +181,37 @@ def window_final():
     frame6.pack_forget()
     frame7.pack_forget()
     frame8.pack(fill=ctk.BOTH, expand=True)
+
+
+pepsi_sml_lst = []
+pepsi_lge_lst = []
+water_lst = []
+tea_lst = []
+gat_pop_lst = []
+pepsi_sml_lst_chck = []
+pepsi_lge_lst_chck = []
+water_lst_chck = []
+tea_lst_chck = []
+gat_pop_lst_chck = []
+order_lst = []
+order_dic = {}
+
+with open("data/now_count.txt", "r") as file_now_obj:
+    file_now = file_now_obj.read()
+
+
+def read_json(file_path):
+    with open(file_path, "r") as file_min_obj:
+        file_min = json.load(file_min_obj)
+    return file_min
+
+# File path to the JSON file
+file_min_path = "data/min.json"
+# Read JSON file and store the data in a dictionary
+file_min = read_json(file_min_path)
+order_dic = file_min
+# Initialize an empty list to store the order
+min_stock = []
 
 
 root = ctk.CTk()
