@@ -3,14 +3,6 @@ import customtkinter as ctk
 import json
 
 
-# Function to append string values from the dictionary to the list
-def minimum():
-    for k, v in file_min.items():
-        string = str(v)
-        min_stock.append(string)
-
-
-# Call the calc function
 order_result = []
 counter1 = 0
 counter2 = 0
@@ -19,16 +11,28 @@ counter4 = 0
 counter5 = 0
 
 
+def read_json(file_path):
+    with open(file_path, "r") as file_min_obj:
+        file_min = json.load(file_min_obj)
+    return file_min
+
+
+# Function to append string values from the dictionary to the list
+def minimum():
+    for k, v in file_min_read.items():
+        string = str(v)
+        min_stock.append(string)
+
+
 def calc():
     min_stock_length = len(min_stock)
-    order_lst_length = len(order_lst)
 
     for count in range(min_stock_length):  # Iterate up to the length of min_stock
-        x = float(min_stock[count])
+        x = min_stock[count]
+        x = float(x)
         y = float(order_lst[count])
         z = x - y
         order_result.append(z)
-        order_dic[count] = order_dic[count].append(z)
 
 
 def append_pepsi_sml():
@@ -127,6 +131,7 @@ def window_start():
     frame7.pack_forget()
     frame8.pack_forget()
     frame1.pack(fill=ctk.BOTH, expand=True)
+    adjust_window_size(frame1)
 
 
 def window_pepsi_sml():
@@ -139,6 +144,7 @@ def window_pepsi_sml():
     frame7.pack_forget()
     frame8.pack_forget()
     frame2.pack(fill=ctk.BOTH, expand=True)
+    adjust_window_size(frame2)
 
 
 def window_pepsi_lge():
@@ -160,6 +166,7 @@ def window_pepsi_lge():
     frame7.pack_forget()
     frame8.pack_forget()
     frame3.pack(fill=ctk.BOTH, expand=True)
+    adjust_window_size(frame3)
 
 
 def window_water():
@@ -180,6 +187,7 @@ def window_water():
     frame7.pack_forget()
     frame8.pack_forget()
     frame4.pack(fill=ctk.BOTH, expand=True)
+    adjust_window_size(frame4)
 
 
 def window_tea():
@@ -200,6 +208,7 @@ def window_tea():
     frame7.pack_forget()
     frame8.pack_forget()
     frame6.pack(fill=ctk.BOTH, expand=True)
+    adjust_window_size(frame6)
 
 
 def window_gat():
@@ -220,6 +229,7 @@ def window_gat():
     frame6.pack_forget()
     frame8.pack_forget()
     frame7.pack(fill=ctk.BOTH, expand=True)
+    adjust_window_size(frame7)
 
 
 def window_final():
@@ -240,13 +250,21 @@ def window_final():
     frame6.pack_forget()
     frame7.pack_forget()
     frame8.pack(fill=ctk.BOTH, expand=True)
+    adjust_window_size(frame8)
+
+
+def adjust_window_size(frame):
+    width = frame.winfo_reqwidth()
+    height = frame.winfo_reqheight()
+    root.geometry(f"{width + 10}x{height + 10}")
 
 
 def place_order():
+    min_stock = read_json(file_min_path)
     concat()
     minimum()
     calc()
-    print(order_result)
+    print("ORDER:", order_result)
 
 
 pepsi_sml_lst = []
@@ -261,25 +279,14 @@ tea_lst_chck = []
 gat_pop_lst_chck = []
 order_lst = []
 temp = []
-order_dic = {}
 
 with open("data/now_count.txt", "r") as file_now_obj:
-    file_now = file_now_obj.read()
+    file_min = file_now_obj.read()
 
-
-def read_json(file_path):
-    with open(file_path, "r") as file_min_obj:
-        file_min = json.load(file_min_obj)
-    return file_min
-
-# File path to the JSON file
 file_min_path = "data/min.json"
-# Read JSON file and store the data in a dictionary
-file_min = read_json(file_min_path)
-order_dic = file_min
-# Initialize an empty list to store the order
+file_min_read = read_json(file_min_path)
+order_dic = file_min_read
 min_stock = []
-
 
 root = ctk.CTk()
 root.geometry("300x600")
@@ -291,7 +298,7 @@ frame1.pack(fill=ctk.BOTH, expand=True)
 label_start = ctk.CTkLabel(frame1, text="Start Order", font=("Helvetica", 20))
 label_start.pack(fill=ctk.BOTH, anchor=ctk.CENTER)
 start_button = ctk.CTkButton(frame1, text="Start Order", command=window_pepsi_sml)
-start_button.pack(side=ctk.TOP, pady=10, anchor=ctk.CENTER)
+start_button.pack(side=ctk.BOTTOM, pady=10, anchor=ctk.CENTER)
 
 # CREATE FRAME 2
 frame2 = ctk.CTkFrame(root)
@@ -379,6 +386,13 @@ label_water = ctk.CTkLabel(frame4, text="Water & Juice", font=("Helvetica", 20))
 label_water.pack(side=ctk.TOP, anchor=ctk.CENTER)
 label_water = ctk.CTkLabel(frame4, text="", font=("Helvetica", 20))
 label_water.pack(side=ctk.TOP, anchor=ctk.CENTER)
+# TITLE
+label_water = ctk.CTkLabel(frame4, text="", font=("Helvetica", 20))
+label_water.pack(side=ctk.TOP, anchor=ctk.CENTER)
+label_water = ctk.CTkLabel(frame4, text="Water", font=("Helvetica", 20))
+label_water.pack(side=ctk.TOP, anchor=ctk.CENTER)
+label_water = ctk.CTkLabel(frame4, text="", font=("Helvetica", 20))
+label_water.pack(side=ctk.TOP, anchor=ctk.CENTER)
 # LABELS & ENTRY
 label_water = ctk.CTkLabel(frame4, text="Cool Ridge")
 label_water.pack(side=ctk.TOP, anchor=ctk.CENTER)
@@ -389,6 +403,13 @@ label_spring = ctk.CTkLabel(frame4, text="Natural Spring Water")
 label_spring.pack(side=ctk.TOP, anchor=ctk.CENTER)
 spring_box = ctk.CTkEntry(master=frame4, width=40, font=("Helvetica", 20))
 spring_box.pack()
+# TITLE
+label_water = ctk.CTkLabel(frame4, text="", font=("Helvetica", 20))
+label_water.pack(side=ctk.TOP, anchor=ctk.CENTER)
+label_water = ctk.CTkLabel(frame4, text="Juice", font=("Helvetica", 20))
+label_water.pack(side=ctk.TOP, anchor=ctk.CENTER)
+label_water = ctk.CTkLabel(frame4, text="", font=("Helvetica", 20))
+label_water.pack(side=ctk.TOP, anchor=ctk.CENTER)
 # LABELS & ENTRY
 label_orange = ctk.CTkLabel(frame4, text="Orange")
 label_orange.pack(side=ctk.TOP, anchor=ctk.CENTER)
