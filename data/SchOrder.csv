@@ -3,15 +3,16 @@ Pepsi,1,,1,2,3
 Pepsi Max,2.75,,2,4.75,3
 Sunkist,3,,2,5,3
 Lemonade,4,,,4,3
-Pepsi,3,,2,5,2
-Pepsi Max,2,,3,5,2
-Sunkist,2,,3,5,3
-Lemonade,2.5,,,2.5,1
-Solo,4,,1,5,2
+Solo,,,,,3
+Pepsi Large,3,,2,5,2
+Pepsi Max Large,2,,3,5,2
+Sunkist Large,2,,3,5,3
+Lemonade Large,2.5,,,2.5,1
+Solo Large,4,,1,5,2
 WATER,7,,4,11,9
 Natural,,,,0,0.5
-Orange,0.7,,1,1.7,1.5
-Apple,0.5,,2,2.5,1.5
+Orange,,,,,1
+Apple,,,,,1
 Apple & Black,2,,,2,1
 Mango & Orange,1.5,,1,2.5,1
 Lemon Lipton Iced Tea,2,,1,3,2
@@ -20,7 +21,7 @@ Mango  Lipton Iced Tea,3.75,,,3.75,2
 Rasberry  Lipton Iced Tea,1,,,1,2
 Lemon Lime,3,,,3,2
 Grape,1,,1,2,2
-Orange,2,,1,3,2
-Apple,4,,1,5,3
-Apple & Black,2.5,,1,3.5,2
-Wild Berry,2,,,2,2
+Orange_pt,2,,1,3,2
+Apple_pt,4,,1,5,3
+Apple & Black_pt,2.5,,1,3.5,2
+Wild Berry_pt,2,,,2,2

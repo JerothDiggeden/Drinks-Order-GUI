@@ -68,7 +68,12 @@ def concat():
     order_lst.extend(water_lst)
     order_lst.extend(tea_lst)
     order_lst.extend(gat_pop_lst)
-    print(order_lst)
+    print(len(order_lst))
+    print(file_min)
+
+def calc():
+    print()
+
 
 
 def window_start():
@@ -136,6 +141,7 @@ def window_gat():
 
 
 def window_final():
+    append_gat_pop()
     concat()
     frame1.pack_forget()
     frame2.pack_forget()
@@ -373,7 +379,7 @@ frame8 = ctk.CTkFrame(root)
 frame8.pack(fill=ctk.BOTH, expand=True)
 
 # BUTTONS
-back_gat = ctk.CTkButton(frame8, text="Back", command=window_gat())
+back_gat = ctk.CTkButton(frame8, text="Back", command=window_gat)
 back_gat.pack(side=ctk.BOTTOM, pady=10)
 gat_button = ctk.CTkButton(frame8, text="Place Order", command=window_final)
 gat_button.pack(side=ctk.BOTTOM, pady=10)
