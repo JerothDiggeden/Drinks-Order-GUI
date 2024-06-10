@@ -69,7 +69,7 @@ def adjust_geometry():
 
 
 root = ctk.CTk()
-root.geometry("300x500")
+root.geometry("300x600")
 root.title("Bucking Bull Ordering")
 
 # CREATE FRAME 1
@@ -206,8 +206,33 @@ water_button.pack(side=ctk.BOTTOM, pady=10)
 # CREATE FRAME 6
 frame6 = ctk.CTkFrame(root)
 frame6.pack(fill=ctk.BOTH, expand=True)
+# TITLE
 label_tea = ctk.CTkLabel(frame6, text="Iced Tea", font=("Helvetica", 20))
 label_tea.pack(side=ctk.TOP, anchor=ctk.CENTER)
+label_tea = ctk.CTkLabel(frame6, text="", font=("Helvetica", 20))
+label_tea.pack(side=ctk.TOP, anchor=ctk.CENTER)
+# LABELS & ENTRY
+label_lemon_tea = ctk.CTkLabel(frame6, text="Lemon Tea")
+label_lemon_tea.pack(side=ctk.TOP, anchor=ctk.CENTER)
+lemon_tea_box = ctk.CTkEntry(master=frame6, width=20, font=("Helvetica", 20))
+lemon_tea_box.pack()
+
+label_peach_tea = ctk.CTkLabel(frame6, text="Peach")
+label_peach_tea.pack(side=ctk.TOP, anchor=ctk.CENTER)
+peach_tea_box = ctk.CTkEntry(master=frame6, width=20, font=("Helvetica", 20))
+peach_tea_box.pack()
+
+label_mango_tea = ctk.CTkLabel(frame6, text="Mango")
+label_mango_tea.pack(side=ctk.TOP, anchor=ctk.CENTER)
+mango_tea_box = ctk.CTkEntry(master=frame6, width=20, font=("Helvetica", 20))
+mango_tea_box.pack()
+
+label_rasp = ctk.CTkLabel(frame6, text="Raspberry")
+label_rasp.pack(side=ctk.TOP, anchor=ctk.CENTER)
+rasp_box = ctk.CTkEntry(master=frame6, width=20, font=("Helvetica", 20))
+rasp_box.pack()
+
+# BUTTONS
 back_tea = ctk.CTkButton(frame6, text="Back", command=window_water)
 back_tea.pack(side=ctk.BOTTOM, pady=10)
 tea_button = ctk.CTkButton(frame6, text="Next", command=window_gat)
@@ -216,8 +241,50 @@ tea_button.pack(side=ctk.BOTTOM, pady=10)
 # CREATE FRAME 7
 frame7 = ctk.CTkFrame(root)
 frame7.pack(fill=ctk.BOTH, expand=True)
-label_gat = ctk.CTkLabel(frame7, text="Gatorade & Pop Tops", font=("Helvetica", 20))
+# TITLE
+label_gat = ctk.CTkLabel(frame7, text="Gatorade", font=("Helvetica", 20))
 label_gat.pack(side=ctk.TOP, anchor=ctk.CENTER)
+label_gat = ctk.CTkLabel(frame7, text="", font=("Helvetica", 20))
+label_gat.pack(side=ctk.TOP, anchor=ctk.CENTER)
+# LABELS & ENTRY
+label_lime = ctk.CTkLabel(frame7, text="Lemon Limey")
+label_lime.pack(side=ctk.TOP, anchor=ctk.CENTER)
+lime_box = ctk.CTkEntry(master=frame7, width=20, font=("Helvetica", 20))
+lime_box.pack()
+
+label_grape = ctk.CTkLabel(frame7, text="Grape")
+label_grape.pack(side=ctk.TOP, anchor=ctk.CENTER)
+grape_box = ctk.CTkEntry(master=frame7, width=20, font=("Helvetica", 20))
+grape_box.pack()
+# TITLE
+label_gat = ctk.CTkLabel(frame7, text="", font=("Helvetica", 20))
+label_gat.pack(side=ctk.TOP, anchor=ctk.CENTER)
+label_gat = ctk.CTkLabel(frame7, text="Pop Tops", font=("Helvetica", 20))
+label_gat.pack(side=ctk.TOP, anchor=ctk.CENTER)
+label_gat = ctk.CTkLabel(frame7, text="", font=("Helvetica", 20))
+label_gat.pack(side=ctk.TOP, anchor=ctk.CENTER)
+# LABELS & ENTRY
+label_orange_pt = ctk.CTkLabel(frame7, text="Orange")
+label_orange_pt.pack(side=ctk.TOP, anchor=ctk.CENTER)
+orange_pt_box = ctk.CTkEntry(master=frame7, width=20, font=("Helvetica", 20))
+orange_pt_box.pack()
+
+label_apple_pt = ctk.CTkLabel(frame7, text="Apple")
+label_apple_pt.pack(side=ctk.TOP, anchor=ctk.CENTER)
+apple_pt_box = ctk.CTkEntry(master=frame7, width=20, font=("Helvetica", 20))
+apple_pt_box.pack()
+
+label_black_pt = ctk.CTkLabel(frame7, text="Black")
+label_black_pt.pack(side=ctk.TOP, anchor=ctk.CENTER)
+black_pt_box = ctk.CTkEntry(master=frame7, width=20, font=("Helvetica", 20))
+black_pt_box.pack()
+
+label_berry_pt = ctk.CTkLabel(frame7, text="Wild Berry")
+label_berry_pt.pack(side=ctk.TOP, anchor=ctk.CENTER)
+berry_pt_box = ctk.CTkEntry(master=frame7, width=20, font=("Helvetica", 20))
+berry_pt_box.pack()
+
+# BUTTONS
 back_gat = ctk.CTkButton(frame7, text="Back", command=window_tea)
 back_gat.pack(side=ctk.BOTTOM, pady=10)
 gat_button = ctk.CTkButton(frame7, text="Place Order")
