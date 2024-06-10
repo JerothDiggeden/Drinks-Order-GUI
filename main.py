@@ -16,7 +16,6 @@ def window_start():
     frame5.pack_forget()
     frame6.pack_forget()
     frame7.pack_forget()
-    frame8.pack_forget()
     frame1.pack(fill=ctk.BOTH, expand=True)
 
 
@@ -27,7 +26,6 @@ def window_pepsi_sml():
     frame5.pack_forget()
     frame6.pack_forget()
     frame7.pack_forget()
-    frame8.pack_forget()
     frame2.pack(fill=ctk.BOTH, expand=True)
 
 
@@ -38,7 +36,6 @@ def window_pepsi_lge():
     frame5.pack_forget()
     frame6.pack_forget()
     frame7.pack_forget()
-    frame8.pack_forget()
     frame3.pack(fill=ctk.BOTH, expand=True)
 
 
@@ -49,7 +46,6 @@ def window_water():
     frame5.pack_forget()
     frame6.pack_forget()
     frame7.pack_forget()
-    frame8.pack_forget()
     frame4.pack(fill=ctk.BOTH, expand=True)
 
 
@@ -60,7 +56,6 @@ def window_juices():
     frame4.pack_forget()
     frame6.pack_forget()
     frame7.pack_forget()
-    frame8.pack_forget()
     frame5.pack(fill=ctk.BOTH, expand=True)
 
 
@@ -71,7 +66,6 @@ def window_tea():
     frame4.pack_forget()
     frame5.pack_forget()
     frame7.pack_forget()
-    frame8.pack_forget()
     frame6.pack(fill=ctk.BOTH, expand=True)
 
 
@@ -82,18 +76,7 @@ def window_gat():
     frame4.pack_forget()
     frame5.pack_forget()
     frame6.pack_forget()
-    frame8.pack_forget()
     frame7.pack(fill=ctk.BOTH, expand=True)
-
-
-def window_pop():
-    frame1.pack_forget()
-    frame2.pack_forget()
-    frame3.pack_forget()
-    frame4.pack_forget()
-    frame6.pack_forget()
-    frame7.pack_forget()
-    frame8.pack(fill=ctk.BOTH, expand=True)
 
 
 def adjust_geometry():
@@ -209,16 +192,6 @@ label_spring = ctk.CTkLabel(frame4, text="Natural Spring Water")
 label_spring.pack(side=ctk.TOP, anchor=ctk.CENTER)
 spring_box = ctk.CTkEntry(master=frame4, width=20, font=("Helvetica", 20))
 spring_box.pack()
-# BUTTONS
-back_water = ctk.CTkButton(frame4, text="Back", command=window_pepsi_lge)
-back_water.pack(side=ctk.BOTTOM, pady=10)
-water_button = ctk.CTkButton(frame4, text="Next", command=window_juices)
-water_button.pack(side=ctk.BOTTOM, pady=10)
-
-# CREATE FRAME 5
-frame5 = ctk.CTkFrame(root)
-frame5.pack(fill=ctk.BOTH, expand=True)
-#
 # LABELS & ENTRY
 label_orange = ctk.CTkLabel(frame4, text="Orange")
 label_orange.pack(side=ctk.TOP, anchor=ctk.CENTER)
@@ -241,6 +214,16 @@ mango_box = ctk.CTkEntry(master=frame4, width=20, font=("Helvetica", 20))
 mango_box.pack()
 
 # BUTTONS
+back_water = ctk.CTkButton(frame4, text="Back", command=window_pepsi_lge)
+back_water.pack(side=ctk.BOTTOM, pady=10)
+water_button = ctk.CTkButton(frame4, text="Next", command=window_tea)
+water_button.pack(side=ctk.BOTTOM, pady=10)
+
+# CREATE FRAME 5
+frame5 = ctk.CTkFrame(root)
+frame5.pack(fill=ctk.BOTH, expand=True)
+
+# BUTTONS
 back_juice = ctk.CTkButton(frame5, text="Back", command=window_juices)
 back_juice.pack(side=ctk.BOTTOM, pady=10)
 juice_button = ctk.CTkButton(frame5, text="Next", command=window_tea)
@@ -251,7 +234,7 @@ frame6 = ctk.CTkFrame(root)
 frame6.pack(fill=ctk.BOTH, expand=True)
 label_tea = ctk.CTkLabel(frame6, text="Iced Tea", font=("Helvetica", 20))
 label_tea.pack(side=ctk.TOP, anchor=ctk.CENTER)
-back_tea = ctk.CTkButton(frame6, text="Back", command=window_juices)
+back_tea = ctk.CTkButton(frame6, text="Back", command=window_water)
 back_tea.pack(side=ctk.BOTTOM, pady=10)
 tea_button = ctk.CTkButton(frame6, text="Next", command=window_gat)
 tea_button.pack(side=ctk.BOTTOM, pady=10)
@@ -259,22 +242,12 @@ tea_button.pack(side=ctk.BOTTOM, pady=10)
 # CREATE FRAME 7
 frame7 = ctk.CTkFrame(root)
 frame7.pack(fill=ctk.BOTH, expand=True)
-label_gat = ctk.CTkLabel(frame7, text="Gatorade", font=("Helvetica", 20))
+label_gat = ctk.CTkLabel(frame7, text="Gatorade & Pop Tops", font=("Helvetica", 20))
 label_gat.pack(side=ctk.TOP, anchor=ctk.CENTER)
-back_gat = ctk.CTkButton(frame7, text="Back", command=window_gat)
+back_gat = ctk.CTkButton(frame7, text="Back", command=window_tea)
 back_gat.pack(side=ctk.BOTTOM, pady=10)
-gat_button = ctk.CTkButton(frame7, text="Next", command=window_pop)
+gat_button = ctk.CTkButton(frame7, text="Place Order")
 gat_button.pack(side=ctk.BOTTOM, pady=10)
-
-# CREATE FRAME 8
-frame8 = ctk.CTkFrame(root)
-frame8.pack(fill=ctk.BOTH, expand=True)
-label_pop = ctk.CTkLabel(frame8, text="Pop Top", font=("Helvetica", 20))
-label_pop.pack(side=ctk.TOP, anchor=ctk.CENTER)
-back_pop = ctk.CTkButton(frame8, text="Back", command=window_pop)
-back_pop.pack(side=ctk.BOTTOM, pady=10)
-pop_button = ctk.CTkButton(frame8, text="Create Order")
-pop_button.pack(side=ctk.BOTTOM, pady=10)
 
 window_start()
 
