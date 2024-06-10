@@ -13,7 +13,6 @@ def window_start():
     frame2.pack_forget()
     frame3.pack_forget()
     frame4.pack_forget()
-    frame5.pack_forget()
     frame6.pack_forget()
     frame7.pack_forget()
     frame1.pack(fill=ctk.BOTH, expand=True)
@@ -23,7 +22,6 @@ def window_pepsi_sml():
     frame1.pack_forget()
     frame3.pack_forget()
     frame4.pack_forget()
-    frame5.pack_forget()
     frame6.pack_forget()
     frame7.pack_forget()
     frame2.pack(fill=ctk.BOTH, expand=True)
@@ -33,7 +31,6 @@ def window_pepsi_lge():
     frame1.pack_forget()
     frame2.pack_forget()
     frame4.pack_forget()
-    frame5.pack_forget()
     frame6.pack_forget()
     frame7.pack_forget()
     frame3.pack(fill=ctk.BOTH, expand=True)
@@ -43,20 +40,9 @@ def window_water():
     frame1.pack_forget()
     frame2.pack_forget()
     frame3.pack_forget()
-    frame5.pack_forget()
     frame6.pack_forget()
     frame7.pack_forget()
     frame4.pack(fill=ctk.BOTH, expand=True)
-
-
-def window_juices():
-    frame1.pack_forget()
-    frame2.pack_forget()
-    frame3.pack_forget()
-    frame4.pack_forget()
-    frame6.pack_forget()
-    frame7.pack_forget()
-    frame5.pack(fill=ctk.BOTH, expand=True)
 
 
 def window_tea():
@@ -64,7 +50,6 @@ def window_tea():
     frame2.pack_forget()
     frame3.pack_forget()
     frame4.pack_forget()
-    frame5.pack_forget()
     frame7.pack_forget()
     frame6.pack(fill=ctk.BOTH, expand=True)
 
@@ -74,7 +59,6 @@ def window_gat():
     frame2.pack_forget()
     frame3.pack_forget()
     frame4.pack_forget()
-    frame5.pack_forget()
     frame6.pack_forget()
     frame7.pack(fill=ctk.BOTH, expand=True)
 
@@ -218,16 +202,6 @@ back_water = ctk.CTkButton(frame4, text="Back", command=window_pepsi_lge)
 back_water.pack(side=ctk.BOTTOM, pady=10)
 water_button = ctk.CTkButton(frame4, text="Next", command=window_tea)
 water_button.pack(side=ctk.BOTTOM, pady=10)
-
-# CREATE FRAME 5
-frame5 = ctk.CTkFrame(root)
-frame5.pack(fill=ctk.BOTH, expand=True)
-
-# BUTTONS
-back_juice = ctk.CTkButton(frame5, text="Back", command=window_juices)
-back_juice.pack(side=ctk.BOTTOM, pady=10)
-juice_button = ctk.CTkButton(frame5, text="Next", command=window_tea)
-juice_button.pack(side=ctk.BOTTOM, pady=10)
 
 # CREATE FRAME 6
 frame6 = ctk.CTkFrame(root)
