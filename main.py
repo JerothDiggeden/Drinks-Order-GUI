@@ -18,7 +18,6 @@ def window_start():
     frame7.pack_forget()
     frame8.pack_forget()
     frame1.pack(fill=ctk.BOTH, expand=True)
-    adjust_geometry()
 
 
 def window_pepsi_sml():
@@ -30,7 +29,6 @@ def window_pepsi_sml():
     frame7.pack_forget()
     frame8.pack_forget()
     frame2.pack(fill=ctk.BOTH, expand=True)
-    adjust_geometry()
 
 
 def window_pepsi_lge():
@@ -42,7 +40,6 @@ def window_pepsi_lge():
     frame7.pack_forget()
     frame8.pack_forget()
     frame3.pack(fill=ctk.BOTH, expand=True)
-    adjust_geometry()
 
 
 def window_water():
@@ -54,7 +51,6 @@ def window_water():
     frame7.pack_forget()
     frame8.pack_forget()
     frame4.pack(fill=ctk.BOTH, expand=True)
-    adjust_geometry()
 
 
 def window_juices():
@@ -66,7 +62,6 @@ def window_juices():
     frame7.pack_forget()
     frame8.pack_forget()
     frame5.pack(fill=ctk.BOTH, expand=True)
-    adjust_geometry()
 
 
 def window_tea():
@@ -78,7 +73,6 @@ def window_tea():
     frame7.pack_forget()
     frame8.pack_forget()
     frame6.pack(fill=ctk.BOTH, expand=True)
-    adjust_geometry()
 
 
 def window_gat():
@@ -90,7 +84,6 @@ def window_gat():
     frame6.pack_forget()
     frame8.pack_forget()
     frame7.pack(fill=ctk.BOTH, expand=True)
-    adjust_geometry()
 
 
 def window_pop():
@@ -101,7 +94,6 @@ def window_pop():
     frame6.pack_forget()
     frame7.pack_forget()
     frame8.pack(fill=ctk.BOTH, expand=True)
-    adjust_geometry()
 
 
 def adjust_geometry():
@@ -110,7 +102,7 @@ def adjust_geometry():
 
 
 root = ctk.CTk()
-root.geometry("600x300")
+root.geometry("300x500")
 root.title("Bucking Bull Ordering")
 
 # CREATE FRAME 1
@@ -124,8 +116,37 @@ start_button.pack(side=ctk.TOP, pady=10, anchor=ctk.CENTER)
 # CREATE FRAME 2
 frame2 = ctk.CTkFrame(root)
 frame2.pack(fill=ctk.BOTH, expand=True)
-label_pepsi_sml = ctk.CTkLabel(frame2, text="Pepsi 450ml", font=("Helvetica", 20))
+# TITLE
+label_pepsi_sml = ctk.CTkLabel(frame2, text="Schweppes 450ml", font=("Helvetica", 20))
 label_pepsi_sml.pack(side=ctk.TOP, anchor=ctk.CENTER)
+blank = ctk.CTkLabel(frame2, text="", font=("Helvetica", 20))
+blank.pack(side=ctk.TOP, anchor=ctk.CENTER)
+# LABELS & ENTRY
+pepsi_sml = ctk.CTkLabel(master=frame2, text='Pepsi 450ml')
+pepsi_sml.pack()
+pepsi_sml_box = ctk.CTkEntry(master=frame2, width=20, font=("Helvetica", 20))
+pepsi_sml_box.pack()
+
+pepsi_max_sml = ctk.CTkLabel(master=frame2, text='Pepsi Max 450ml')
+pepsi_max_sml.pack()
+pepsi_max_sml_box = ctk.CTkEntry(master=frame2, width=20, font=("Helvetica", 20))
+pepsi_max_sml_box.pack()
+
+sunkist_sml = ctk.CTkLabel(master=frame2, text='Sunkist 450ml')
+sunkist_sml.pack()
+sunkist_sml_box = ctk.CTkEntry(master=frame2, width=20, font=("Helvetica", 20))
+sunkist_sml_box.pack()
+
+lemonade_sml = ctk.CTkLabel(master=frame2, text='Lemonade 450ml')
+lemonade_sml.pack()
+lemonade_sml_box = ctk.CTkEntry(master=frame2, width=20, font=("Helvetica", 20))
+lemonade_sml_box.pack()
+
+solo_sml = ctk.CTkLabel(master=frame2, text='Solo 450ml', justify=ctk.LEFT)
+solo_sml.pack()
+solo_sml_box = ctk.CTkEntry(master=frame2, width=20, font=("Helvetica", 20))
+solo_sml_box.pack()
+# BUTTONS
 back_start_button = ctk.CTkButton(frame2, text="Back", command=window_start)
 back_start_button.pack(side=ctk.BOTTOM, pady=10)
 pepsi_sml_button = ctk.CTkButton(frame2, text="Next", command=window_pepsi_lge)
@@ -134,8 +155,37 @@ pepsi_sml_button.pack(side=ctk.BOTTOM, pady=10)
 # CREATE FRAME 3
 frame3 = ctk.CTkFrame(root)
 frame3.pack(fill=ctk.BOTH, expand=True)
-label_pepsi_lge = ctk.CTkLabel(frame3, text="Pepsi 600ml", font=("Helvetica", 20))
+# TITLE
+label_pepsi_lge = ctk.CTkLabel(frame3, text="Schweppes 600ml", font=("Helvetica", 20))
 label_pepsi_lge.pack(side=ctk.TOP, anchor=ctk.CENTER)
+blank = ctk.CTkLabel(frame3, text="", font=("Helvetica", 20))
+blank.pack(side=ctk.TOP, anchor=ctk.CENTER)
+# LABELS & ENTRY
+pepsi_lge = ctk.CTkLabel(master=frame3, text='Pepsi 600ml')
+pepsi_lge.pack()
+pepsi_lge_box = ctk.CTkEntry(master=frame3, width=20, font=("Helvetica", 20))
+pepsi_lge_box.pack()
+
+pepsi_max_lge = ctk.CTkLabel(master=frame3, text='Pepsi Max 600ml')
+pepsi_max_lge.pack()
+pepsi_max_lge_box = ctk.CTkEntry(master=frame3, width=20, font=("Helvetica", 20))
+pepsi_max_lge_box.pack()
+
+sunkist_lge = ctk.CTkLabel(master=frame3, text='Sunkist 600ml')
+sunkist_lge.pack()
+sunkist_lge_box = ctk.CTkEntry(master=frame3, width=20, font=("Helvetica", 20))
+sunkist_lge_box.pack()
+
+lemonade_lge = ctk.CTkLabel(master=frame3, text='Lemonade 600ml')
+lemonade_lge.pack()
+lemonade_lge_box = ctk.CTkEntry(master=frame3, width=20, font=("Helvetica", 20))
+lemonade_lge_box.pack()
+
+solo_lge = ctk.CTkLabel(master=frame3, text='Solo 600ml', justify=ctk.LEFT)
+solo_lge.pack()
+solo_lge_box = ctk.CTkEntry(master=frame3, width=20, font=("Helvetica", 20))
+solo_lge_box.pack()
+# BUTTONS
 back_start_button = ctk.CTkButton(frame3, text="Back", command=window_pepsi_sml)
 back_start_button.pack(side=ctk.BOTTOM, pady=10)
 pepsi_lge_button = ctk.CTkButton(frame3, text="Next", command=window_water)
@@ -144,8 +194,22 @@ pepsi_lge_button.pack(side=ctk.BOTTOM, pady=10)
 # CREATE FRAME 4
 frame4 = ctk.CTkFrame(root)
 frame4.pack(fill=ctk.BOTH, expand=True)
-label_water = ctk.CTkLabel(frame4, text="Water", font=("Helvetica", 20))
+# TITLE
+label_water = ctk.CTkLabel(frame4, text="Water & Juice", font=("Helvetica", 20))
 label_water.pack(side=ctk.TOP, anchor=ctk.CENTER)
+label_water = ctk.CTkLabel(frame4, text="", font=("Helvetica", 20))
+label_water.pack(side=ctk.TOP, anchor=ctk.CENTER)
+# LABELS & ENTRY
+label_water = ctk.CTkLabel(frame4, text="Cool Ridge")
+label_water.pack(side=ctk.TOP, anchor=ctk.CENTER)
+water_box = ctk.CTkEntry(master=frame4, width=20, font=("Helvetica", 20))
+water_box.pack()
+
+label_spring = ctk.CTkLabel(frame4, text="Natural Spring Water")
+label_spring.pack(side=ctk.TOP, anchor=ctk.CENTER)
+spring_box = ctk.CTkEntry(master=frame4, width=20, font=("Helvetica", 20))
+spring_box.pack()
+# BUTTONS
 back_water = ctk.CTkButton(frame4, text="Back", command=window_pepsi_lge)
 back_water.pack(side=ctk.BOTTOM, pady=10)
 water_button = ctk.CTkButton(frame4, text="Next", command=window_juices)
@@ -154,8 +218,29 @@ water_button.pack(side=ctk.BOTTOM, pady=10)
 # CREATE FRAME 5
 frame5 = ctk.CTkFrame(root)
 frame5.pack(fill=ctk.BOTH, expand=True)
-label_juice = ctk.CTkLabel(frame5, text="Juice", font=("Helvetica", 20))
-label_juice.pack(side=ctk.TOP, anchor=ctk.CENTER)
+#
+# LABELS & ENTRY
+label_orange = ctk.CTkLabel(frame4, text="Orange")
+label_orange.pack(side=ctk.TOP, anchor=ctk.CENTER)
+orange_box = ctk.CTkEntry(master=frame4, width=20, font=("Helvetica", 20))
+orange_box.pack()
+
+label_apple = ctk.CTkLabel(frame4, text="Apple")
+label_apple.pack(side=ctk.TOP, anchor=ctk.CENTER)
+spring_apple = ctk.CTkEntry(master=frame4, width=20, font=("Helvetica", 20))
+spring_apple.pack()
+
+label_black = ctk.CTkLabel(frame4, text="Apple & Blackcurrent")
+label_black.pack(side=ctk.TOP, anchor=ctk.CENTER)
+black_box = ctk.CTkEntry(master=frame4, width=20, font=("Helvetica", 20))
+black_box.pack()
+
+label_mango = ctk.CTkLabel(frame4, text="Mango & Orange")
+label_mango.pack(side=ctk.TOP, anchor=ctk.CENTER)
+mango_box = ctk.CTkEntry(master=frame4, width=20, font=("Helvetica", 20))
+mango_box.pack()
+
+# BUTTONS
 back_juice = ctk.CTkButton(frame5, text="Back", command=window_juices)
 back_juice.pack(side=ctk.BOTTOM, pady=10)
 juice_button = ctk.CTkButton(frame5, text="Next", command=window_tea)
