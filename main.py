@@ -1,6 +1,7 @@
 import pandas as pd
 import customtkinter as ctk
 import json
+import re
 
 
 order_result = []
@@ -15,6 +16,28 @@ def read_json(file_path):
     with open(file_path, "r") as file_min_obj:
         file_min = json.load(file_min_obj)
     return file_min
+
+
+def edit_dict(order_dict):
+    for k, v in order_dict.items():
+        # Modify the key as needed
+        new_key = k.replace("__", " ")
+        new_key = k.replace("_", " ")
+        new_key = new_key.title()
+        new_key = new_key.replace("Pt", "PT")
+        new_key = new_key.replace("  ", " ")
+        print(new_key)
+        new_order_dict[new_key] = v
+    print(new_order_dict)
+
+
+def edit_values():
+    for value in range(len(order_lst)):
+        value = order_lst[value]
+        for k, v in new_order_dict.items():
+            v = value
+            new_order_dict[k] = v
+    print(new_order_dict)
 
 
 # Function to append string values from the dictionary to the list
@@ -33,6 +56,7 @@ def calc():
         y = float(order_lst[count])
         z = x - y
         order_result.append(z)
+
 
 
 def append_pepsi_sml():
@@ -253,18 +277,20 @@ def window_final():
     adjust_window_size(frame8)
 
 
-def adjust_window_size(frame):
-    width = frame.winfo_reqwidth()
-    height = frame.winfo_reqheight()
-    root.geometry(f"{width + 10}x{height + 10}")
-
-
 def place_order():
     min_stock = read_json(file_min_path)
     concat()
     minimum()
     calc()
-    print("ORDER:", order_result)
+    edit_dict(order_dict)
+    edit_values()
+    print("ORDER:", new_order_dict)
+
+
+def adjust_window_size(frame):
+    width = frame.winfo_reqwidth()
+    height = frame.winfo_reqheight()
+    root.geometry(f"{width + 10}x{height + 10}")
 
 
 pepsi_sml_lst = []
@@ -279,6 +305,8 @@ tea_lst_chck = []
 gat_pop_lst_chck = []
 order_lst = []
 temp = []
+order_dict = {}
+new_order_dict = {'Pepsi': 0, 'Pepsi Max': 0, 'Sunkist': 0, 'Lemonade': 0, 'Solo': 0, 'Pepsi Large': 0, 'Pepsi Max Large': 0, 'Sunkist Large': 0, 'Lemonade Large': 0, 'Solo Large': 0, 'Water': 0, 'Natural': 0, 'Orange': 0, 'Apple': 0, 'Apple Black': 0, 'Mango Orange': 0, 'Lemon Lipton Iced Tea': 0, 'Peach Lipton Iced Tea': 0, 'Mango Lipton Iced Tea': 0, 'Rasberry Lipton Iced Tea': 0, 'Lemon Lime': 0, 'Grape': 0, 'Orange PT': 0, 'Apple PT': 0, 'Apple Black PT': 0, 'Wild Berry PT': 0}
 
 with open("data/now_count.txt", "r") as file_now_obj:
     file_min = file_now_obj.read()
@@ -287,6 +315,18 @@ file_min_path = "data/min.json"
 file_min_read = read_json(file_min_path)
 order_dic = file_min_read
 min_stock = []
+
+# def gen_dict():
+#     for k in order_dic:
+#         mystring = k
+#         ud_string = re.sub("__", "", mystring)
+#         ud_string = re.sub("_", " ", mystring)
+#         ud_string = ud_string.replace("  ", " ")
+#         ud_string = ud_string.title()
+#         ud_string = ud_string.replace("Pt", "PT")
+#         order_dict[k] = ud_string
+#         # print(ud_string)
+#         # print(order_dict)
 
 root = ctk.CTk()
 root.geometry("300x600")
