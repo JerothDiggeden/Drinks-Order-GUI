@@ -1,7 +1,6 @@
-import pandas as pd
 import customtkinter as ctk
 import json
-import re
+from fpdf import FPDF
 
 
 order_result = []
@@ -30,12 +29,8 @@ def edit_dict(order_dict):
 
 
 def edit_values():
-    for value in range(len(order_result)):
-        data = order_result[value]
-        for k, v in new_order_dict.items():
-            v = data
-            new_order_dict[k] = v
-    print("new_order_dic", new_order_dict)
+    for value, key in zip(order_result, new_order_dict.keys()):
+        new_order_dict[key] = value
 
 
 # Function to append string values from the dictionary to the list
@@ -54,7 +49,8 @@ def calc():
         y = float(order_lst[count])
         z = x - y
         order_result.append(z)
-    print("order result", order_result)
+    for val in range(len(order_result)):
+        val_dict[val] = order_result[val]
 
 
 
@@ -304,6 +300,7 @@ tea_lst_chck = []
 gat_pop_lst_chck = []
 order_lst = []
 temp = []
+val_dict = {}
 order_dict = {}
 new_order_dict = {'Pepsi': 0, 'Pepsi Max': 0, 'Sunkist': 0, 'Lemonade': 0, 'Solo': 0, 'Pepsi Large': 0, 'Pepsi Max Large': 0, 'Sunkist Large': 0, 'Lemonade Large': 0, 'Solo Large': 0, 'Water': 0, 'Natural': 0, 'Orange': 0, 'Apple': 0, 'Apple Black': 0, 'Mango Orange': 0, 'Lemon Lipton Iced Tea': 0, 'Peach Lipton Iced Tea': 0, 'Mango Lipton Iced Tea': 0, 'Rasberry Lipton Iced Tea': 0, 'Lemon Lime': 0, 'Grape': 0, 'Orange PT': 0, 'Apple PT': 0, 'Apple Black PT': 0, 'Wild Berry PT': 0}
 
@@ -314,18 +311,6 @@ file_min_path = "data/min.json"
 file_min_read = read_json(file_min_path)
 order_dic = file_min_read
 min_stock = []
-
-# def gen_dict():
-#     for k in order_dic:
-#         mystring = k
-#         ud_string = re.sub("__", "", mystring)
-#         ud_string = re.sub("_", " ", mystring)
-#         ud_string = ud_string.replace("  ", " ")
-#         ud_string = ud_string.title()
-#         ud_string = ud_string.replace("Pt", "PT")
-#         order_dict[k] = ud_string
-#         # print(ud_string)
-#         # print(order_dict)
 
 root = ctk.CTk()
 root.geometry("300x600")
