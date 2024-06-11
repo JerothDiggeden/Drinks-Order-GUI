@@ -26,18 +26,16 @@ def edit_dict(order_dict):
         new_key = new_key.title()
         new_key = new_key.replace("Pt", "PT")
         new_key = new_key.replace("  ", " ")
-        print(new_key)
         new_order_dict[new_key] = v
-    print(new_order_dict)
 
 
 def edit_values():
-    for value in range(len(order_lst)):
-        value = order_lst[value]
+    for value in range(len(order_result)):
+        data = order_result[value]
         for k, v in new_order_dict.items():
-            v = value
+            v = data
             new_order_dict[k] = v
-    print(new_order_dict)
+    print("new_order_dic", new_order_dict)
 
 
 # Function to append string values from the dictionary to the list
@@ -56,6 +54,7 @@ def calc():
         y = float(order_lst[count])
         z = x - y
         order_result.append(z)
+    print("order result", order_result)
 
 
 
@@ -282,7 +281,7 @@ def place_order():
     concat()
     minimum()
     calc()
-    edit_dict(order_dict)
+    edit_dict(new_order_dict)
     edit_values()
     print("ORDER:", new_order_dict)
 
